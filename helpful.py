@@ -1,5 +1,5 @@
 import streamlit as st
-from constants import G,g,c
+G,g,c
 
 def calculate_gravitational_force(mass1,mass2,r):
     return (G*mass1*mass2)/(r**2)
