@@ -1,2 +1,2 @@
 streamlit
-from scipy.constants import g, c
+from scipy.constants import g, c, G 
