@@ -1,8 +1,9 @@
-import streamlit as st
-from scipy.constants import g, c
 
-def calculate_gravitational_force(mass):
-    return mass * g
+import streamlit as st
+from scipy.constants import g, c, G
+
+def calculate_gravitational_force(mass1,mass2,r):
+    return (G*mass1*mass2)/(r**2)
 
 def calculate_kinetic_energy(mass, velocity):
     return 0.5 * mass * velocity ** 2
@@ -16,29 +17,30 @@ def calculate_pressure(density, depth):
 st.title("Simple Physics Calculator")
 
 st.header("1. Gravitational Force")
-mass_g = st.number_input("Enter mass (kg)", value=1.0)
+mass1 = st.number_input("Enter mass (kg)", value=1.0)
+mass2 = st.number_input("Enter mass (KG)", value=1.0)
+distance=st.number_input("Enter a distance ",value=1.0)
 if st.button("Calculate Gravitational Force"):
-    force = calculate_gravitational_force(mass_g)
-    st.write(f"Gravitational Force: {force:.2f} N")
+    force = calculate_gravitational_force(mass1,mass2,distance)
+    st.write(f"Gravitational Force: {force} N")
 
 st.header("2. Kinetic Energy")
 mass_ke = st.number_input("Enter mass (kg)", value=1.0, key="mass_ke")
 velocity = st.number_input("Enter velocity (m/s)", value=1.0)
 if st.button("Calculate Kinetic Energy"):
     ke = calculate_kinetic_energy(mass_ke, velocity)
-    st.write(f"Kinetic Energy: {ke:.2f} J")
-
+    st.write(f"Kinetic Energy: {ke} J")
 
 st.header("3. Nuclear Energy")
-mass_ne = st.number_input("Enter mass (kg)", value=1.0, key="mass_ne")
+mass_c=st.number_input("Enter mass (Kg)",value=1.0)
 if st.button("Calculate Nuclear Energy"):
-    nuclear_energy = calculate_nuclear_energy(mass_ne)
-    st.write(f"Nuclear Energy: {nuclear_energy:.2f} J")
+    mx=calculate_nuclear_energy(mass_c)
+    st.write(f"Nuclear Energy: {mx}")
 
-
-st.header("4. Pressure")
-density = st.number_input("Enter density (kg/m³)", value=1025)
-depth = st.number_input("Enter depth (m)", value=1.0)
+st.header("4.Pressure")
+depth=st.number_input("Enter a depth (m)", value=1.0)
+density=st.number_input("Enter a density ",value=1)
 if st.button("Calculate Pressure"):
-    pressure = calculate_pressure(density, depth)
-    st.write(f"Pressure: {pressure:.2f} Pa")
+    pa=calculate_pressure(density,depth)
+    st.write(f"Pressure: {pa}  Pa")
+
