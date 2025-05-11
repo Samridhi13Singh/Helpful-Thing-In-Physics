@@ -1,4 +1,4 @@
 streamlit
-from scipy.constants import G
-from scipy.constants import g
-from scipy.constants import c
+scipy
+
+
